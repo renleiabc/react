@@ -11,7 +11,8 @@ class PostList extends Component {
       posts: []
     }
     this.timer = null //定时器
-    this.handleVote = this.handleVote.bind(this) // ES6 class中，必须手动绑定方法this的指向；
+      this.handleVote = this.handleVote.bind(this); // ES6 class中，必须手动绑定方法this的指向；
+      this.handleSave = this.handleSave.bind(this);
   }
   componentDidMount() {
     // 用setTimerout 模拟异步从服务器端获取数据
@@ -59,6 +60,20 @@ class PostList extends Component {
       posts
     })
   }
+  // 保存帖子
+  handleSave(post) {
+      console.log(this.state)
+    // 根据post的id，过滤出当前要更新的post
+    const data = this.state.posts.map(item => {
+      const newItem = item.id === post.id ? post : item
+      return newItem
+    })
+      console.log(data)
+    this.setState({
+        data
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -66,7 +81,12 @@ class PostList extends Component {
         <ul>
           {/*引用并渲染内容*/}
           {this.state.posts.map((item, index) => (
-            <PostItem key={index} post={item} onVote={this.handleVote} />
+            <PostItem
+              key={item.id}
+              post={item}
+              onVote={this.handleVote}
+              onSave={this.handleSave}
+            />
           ))}
         </ul>
       </div>
