@@ -17,7 +17,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+ul,li{
+    list-style: none;
+}
+.current{
+    color:red;
+    cursor: pointer;
+}
 .App-link {
   color: #61dafb;
 }
