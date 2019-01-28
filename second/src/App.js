@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Time from './Time'
 import './App.css'
 import UserListContainer from './UserListContainer'
-import AutoFocusTextInput from './AutoFocusTextInput'
+import Container from './Container'
+import Parent from './Parent'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -12,14 +13,13 @@ class App extends Component {
     }
   }
   render() {
-    return (
-      <div className="App">
+    return <div className="App">
         {this.state.display ? <h1>Hello,{this.state.user}</h1> : null}
-            <Time />
-            <UserListContainer />
-            <AutoFocusTextInput/>
+        <Time />
+        <UserListContainer />
+        <Container />
+        <Parent/>
       </div>
-    )
   }
 }
 
