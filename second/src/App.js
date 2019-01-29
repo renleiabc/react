@@ -4,6 +4,8 @@ import './App.css'
 import UserListContainer from './UserListContainer'
 import Container from './Container'
 import Parent from './Parent'
+import MyComponent from './Mycomponent'
+import SimpleControlledComponent from './SimpleControlledComponent'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -13,13 +15,17 @@ class App extends Component {
     }
   }
   render() {
-    return <div className="App">
+    return (
+      <div className="App">
         {this.state.display ? <h1>Hello,{this.state.user}</h1> : null}
         <Time />
         <UserListContainer />
         <Container />
-        <Parent/>
+        <Parent />
+        <MyComponent />
+        <SimpleControlledComponent />
       </div>
+    )
   }
 }
 

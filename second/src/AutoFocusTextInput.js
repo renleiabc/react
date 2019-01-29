@@ -13,7 +13,14 @@ class AutoFocusTextInput extends Component {
   // 让input失去焦点
   blur() {
     this.textInput.blur()
-    console.log(this.textInput.value)
+      console.log(this.textInput.value);
+      let val = this.textInput.value;
+      let data = {
+          value:val
+      }
+      let str = JSON.stringify(data)
+      let obj = encodeURIComponent(str)
+      localStorage.setItem('data',obj)
   }
   render() {
     return (
