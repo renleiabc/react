@@ -23,13 +23,9 @@
         "not ie <= 11",
         "not op_mini all"
     ],
-    "proxy": { 
-        "/api": { 
-            "target": "https://xxx.com/", 
-            "changeOrigin": true, 
-            "pathRewrite": { 
-                "^/api": "/"
-            }
-        }
+    "proxy": "https://d.apicloud.com/mcm/api",
+    "devDependencies": {
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0"
     }
 }
