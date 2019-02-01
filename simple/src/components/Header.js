@@ -13,7 +13,7 @@ class Header extends Component {
           {username && username.length > 0 ? (
             <span className="user">
               当前用户：{username}&nbsp;
-              <button onClick={onLogout}>注销</button>
+              <input type="button" onClick={onLogout} value="注销"/>
             </span>
           ) : (
             <span className="right-link">
