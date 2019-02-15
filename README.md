@@ -4,7 +4,7 @@ react学习
 1、下载
 npm install node-sass sass-loader --save-dev
 2、在开发阶段，找到项目的node_modules/react-scripts/config文件夹下找到webpack.config.js文件
-在webpack.config.js文件中，找到rule下的oneof在里面添加
+在webpack.config.js文件中，找到rule下的oneof在里面添加  
   //sass
           {
             test: /\.scss$/,
