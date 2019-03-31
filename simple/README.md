@@ -1,5 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-[在线预览](https://renleiabc.github.io/react/simple/public/index.html)
+[在线预览](https://renleiabc.github.io/react/simple/build/index.html)
 ## Available Scripts
 
 In the project directory, you can run:
