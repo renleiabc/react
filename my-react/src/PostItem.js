@@ -2,10 +2,10 @@
  * @Author: renlei
  * @Date: 2019-12-05 15:22:07
  * @LastEditors: renlei
- * @LastEditTime: 2019-12-05 18:02:31
+ * @LastEditTime: 2019-12-06 15:53:48
  * @Description:
  */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -15,7 +15,7 @@ function PostItem(props) {
   };
   const { post } = props;
   return (
-    <li>
+    <li className="item">
       <div>{post.title}</div>
       <div>
         创建人：

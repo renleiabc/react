@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2019-12-05 14:50:01
  * @LastEditors: renlei
- * @LastEditTime: 2019-12-05 18:02:53
+ * @LastEditTime: 2019-12-06 10:06:53
  * @Description:
  */
 
@@ -78,7 +78,13 @@ class PostList extends Component {
       <div>
         帖子列表：
         <ul>
-          {this.state.posts.map((item) => <PostItem post={item} onVote={this.handleVote} />)}
+          {this.state.posts.map((item) => (
+            <PostItem
+              post={item}
+              onVote={this.handleVote}
+              key={item.id}
+            />
+          ))}
         </ul>
       </div>
     );

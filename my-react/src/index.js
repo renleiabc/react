@@ -2,12 +2,13 @@
  * @Author: renlei
  * @Date: 2019-11-22 13:30:35
  * @LastEditors: renlei
- * @LastEditTime: 2019-12-05 14:56:52
+ * @LastEditTime: 2019-12-06 15:51:21
  * @Description:
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './sass/style.scss';
 // import App from './App';
 import PostList from './PostList';
 import * as serviceWorker from './serviceWorker';
