@@ -6,10 +6,12 @@
  * @Description: PostList组件，有状态组件
  */
 import React, { Component } from 'react'
-import PostItem from '../components/PostItem'
-import '../less/PostList.less'
-import less from "less"
-import {Button} from 'antd'
+import DynamicAntdTheme, {
+  getThemeColor,
+  changeAntdTheme
+} from 'dynamic-antd-theme'
+import { Button } from 'antd'
+
 
 class PostList extends Component {
   constructor(props) {
@@ -81,35 +83,28 @@ class PostList extends Component {
       posts
     })
   }
-  handleClick() {
-    less.modifyVars(
-        //更换主题颜色要这么写
-        {
-          '@primary-color': '#e64e14',
-          '@btn-primary-bg': '#5d72cc'
-        }
-      )
-      .then(() => {
-        console.log('success')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  handleChangeTheme() {
+    console.log("0000");
+    const color = 'blue'
+    changeAntdTheme(getThemeColor(color))
+  }
+  // 主题色修改过后把系统名称的背景色更换
+  themeChangeCallback(color) {
+    document.getElementById('sys_name').style.backgroundColor = color
   }
   render() {
     return (
       <div className="container">
-        帖子列表：
-        <div className="minor-borderTop major-fontColor">
-          <Button onClick={this.handleClick} type={'primary'}>
-            更换
-          </Button>
+        <div className="theme-container">
+          <span>Change antd theme: </span>
+          <DynamicAntdTheme
+            primaryColor="#000000"
+           
+            placement="bottomLeft"
+            
+          />
         </div>
-        <ul>
-          {this.state.posts.map(item => (
-            <PostItem key={item.id} post={item} onVote={this.handleVote} />
-          ))}
-        </ul>
+        <Button onClick={this.handleChangeTheme}>Change Theme</Button>
       </div>
     )
   }

@@ -1,8 +1,8 @@
 /*
  * @Author: renlei
  * @Date: 2019-12-18 10:12:20
- * @LastEditors: renlei
- * @LastEditTime: 2019-12-18 17:51:57
+ * @LastEditors  : renlei
+ * @LastEditTime : 2019-12-19 16:31:35
  * @Description: 修改默认配置
  */
 // import { devCss, devLess } from './dev'
@@ -30,14 +30,14 @@ const rewiredMap = () => config => {
   return config
 }
 module.exports = override(
-  fixBabelImports('import', {
-    libraryName: 'antd',
-    libraryDirectory: 'es',
-    style: true
-  }),
+  // fixBabelImports('import', {
+  //   libraryName: 'antd',
+  //   libraryDirectory: 'es',
+  //   style: true
+  // }),
   addLessLoader({
     javascriptEnabled: true,
-    modifyVars: { '@primary-color': '#1da57a' }
+    modifyVars: {}
   }),
   addWebpackPlugin(new AntdDayjsWebpackPlugin()),
   rewiredMap()
