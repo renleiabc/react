@@ -2,15 +2,12 @@
  * @Author: renlei
  * @Date: 2019-12-18 09:48:44
  * @LastEditors  : renlei
- * @LastEditTime : 2019-12-19 15:24:12
+ * @LastEditTime : 2019-12-24 17:01:50
  * @Description: PostList组件，有状态组件
  */
 import React, { Component } from 'react'
 import PostItem from '../components/PostItem'
 import '../less/PostList.less'
-import less from "less"
-import {Button} from 'antd'
-
 class PostList extends Component {
   constructor(props) {
     super(props)
@@ -81,29 +78,11 @@ class PostList extends Component {
       posts
     })
   }
-  handleClick() {
-    less.modifyVars(
-        //更换主题颜色要这么写
-        {
-          '@primary-color': '#e64e14',
-          '@btn-primary-bg': '#5d72cc'
-        }
-      )
-      .then(() => {
-        console.log('success')
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
   render() {
     return (
       <div className="container">
         帖子列表：
         <div className="minor-borderTop major-fontColor">
-          <Button onClick={this.handleClick} type={'primary'}>
-            更换
-          </Button>
         </div>
         <ul>
           {this.state.posts.map(item => (
@@ -114,4 +93,4 @@ class PostList extends Component {
     )
   }
 }
-export default PostList
+export default PostList;
