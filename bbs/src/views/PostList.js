@@ -2,11 +2,13 @@
  * @Author: renlei
  * @Date: 2019-12-18 09:48:44
  * @LastEditors  : renlei
- * @LastEditTime : 2019-12-24 17:01:50
+ * @LastEditTime : 2019-12-25 17:54:08
  * @Description: PostList组件，有状态组件
  */
 import React, { Component } from 'react'
 import PostItem from '../components/PostItem'
+import LoginForm from './LoginForm'
+import ReactStackFrom from "./ReactStackForm"
 import '../less/PostList.less'
 class PostList extends Component {
   constructor(props) {
@@ -89,6 +91,8 @@ class PostList extends Component {
             <PostItem key={item.id} post={item} onVote={this.handleVote} />
           ))}
         </ul>
+        <LoginForm></LoginForm>
+        <ReactStackFrom></ReactStackFrom>
       </div>
     )
   }
