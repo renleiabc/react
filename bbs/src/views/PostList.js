@@ -2,13 +2,14 @@
  * @Author: renlei
  * @Date: 2019-12-18 09:48:44
  * @LastEditors  : renlei
- * @LastEditTime : 2019-12-25 17:54:08
+ * @LastEditTime : 2020-01-03 11:28:59
  * @Description: PostList组件，有状态组件
  */
 import React, { Component } from 'react'
 import PostItem from '../components/PostItem'
 import LoginForm from './LoginForm'
 import ReactStackFrom from "./ReactStackForm"
+import CheckBox from "./ChackBox"
 import '../less/PostList.less'
 class PostList extends Component {
   constructor(props) {
@@ -93,6 +94,7 @@ class PostList extends Component {
         </ul>
         <LoginForm></LoginForm>
         <ReactStackFrom></ReactStackFrom>
+        <CheckBox></CheckBox>
       </div>
     )
   }
