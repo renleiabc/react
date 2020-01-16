@@ -5,25 +5,24 @@
  * @LastEditTime : 2020-01-03 11:48:29
  * @Description:复选框和单选框
  */
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class CheckBox extends Component {
   constructor(props) {
-    super(props)
-    this.state = { react: false, redux: false, mobx: false }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSumit = this.handleSumit.bind(this)
+    super(props);
+    this.state = { react: false, redux: false, mobx: false };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSumit = this.handleSumit.bind(this);
   }
   // 监听复选框的变化，设置复选框的checked状态
   handleChange(event) {
-    console.log(event.target.name, event.target.checked)
-    this.setState({ [event.target.name]: event.target.checked })
-    
+    console.log(event.target.name, event.target.checked);
+    this.setState({ [event.target.name]: event.target.checked });
   }
   // 表单提交的响应函数
   handleSumit(event) {
-    console.log(this.state)
-    event.preventDefault()
+    console.log(this.state);
+    event.preventDefault();
   }
   render() {
     return (
@@ -61,7 +60,7 @@ class CheckBox extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-    )
+    );
   }
 }
-export default CheckBox
+export default CheckBox;

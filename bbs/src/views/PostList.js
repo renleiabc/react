@@ -2,15 +2,13 @@
  * @Author: renlei
  * @Date: 2019-12-18 09:48:44
  * @LastEditors  : renlei
- * @LastEditTime : 2020-01-03 11:28:59
+ * @LastEditTime : 2020-01-09 15:00:52
  * @Description: PostList组件，有状态组件
  */
 import React, { Component } from 'react'
-import PostItem from '../components/PostItem'
-import LoginForm from './LoginForm'
-import ReactStackFrom from "./ReactStackForm"
-import CheckBox from "./ChackBox"
+import PostItem from './PostItem'
 import '../less/PostList.less'
+import SimpleForm from '../simple/SimpleForm'
 class PostList extends Component {
   constructor(props) {
     super(props)
@@ -20,6 +18,7 @@ class PostList extends Component {
     this.timer = null
     // ES6 class中，必须手动绑定方法this的指向；
     this.handleVote = this.handleVote.bind(this)
+    this.handleSave = this.handleSave.bind(this)
   }
   /* 这个方法在组件被挂载DOM后调用，且只调用一次。这个时候已经可以获取到DOM的结构，
   因此依赖DOM节点的操作可以放到这个方法中。这个方法通常还会用于向服务器端请求数据。
@@ -81,22 +80,35 @@ class PostList extends Component {
       posts
     })
   }
+  // 保存帖子
+  handleSave(post) {
+    // 根据post的id，过滤出当前要更新的post
+    const posts = this.state.posts.map(item => {
+      const newItem = item.id === post.id ? post : item
+      return newItem
+    })
+    this.setState({
+      posts
+    })
+  }
   render() {
     return (
       <div className="container">
         帖子列表：
-        <div className="minor-borderTop major-fontColor">
-        </div>
+        <div className="minor-borderTop major-fontColor"></div>
         <ul>
           {this.state.posts.map(item => (
-            <PostItem key={item.id} post={item} onVote={this.handleVote} />
+            <PostItem
+              key={item.id}
+              post={item}
+              onVote={this.handleVote}
+              onSave={this.handleSave}
+            />
           ))}
         </ul>
-        <LoginForm></LoginForm>
-        <ReactStackFrom></ReactStackFrom>
-        <CheckBox></CheckBox>
+        <SimpleForm></SimpleForm>
       </div>
     )
   }
 }
-export default PostList;
+export default PostList
