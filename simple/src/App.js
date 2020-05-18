@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import asyncComponent from './asyncComponent'
-//通过asyncComponent导入组件， 创建代码分片点
-const AsyncHome = asyncComponent(() => import('./components/Home'))
-const AsyncLogin = asyncComponent(() => import('./components/Login'))
+/*
+ * @Author: renlei
+ * @Date: 2020-05-18 11:35:57
+ * @LastEditors: renlei
+ * @LastEditTime: 2020-05-18 15:48:13
+ * @Description:
+ */
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={AsyncHome} />
-          <Route path="/login" component={AsyncLogin} />
-          <Route path="/posts" component={AsyncHome} />
-        </Switch>
-      </Router>
-    )
-  }
+import React from "react";
+import { Button } from "antd";
+import "./App.less";
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Button type="primary">Button</Button>
+      </header>
+    </div>
+  );
 }
 
-export default App
+export default App;
