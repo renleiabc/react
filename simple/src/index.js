@@ -1,6 +1,14 @@
+/*
+ * @Author: renlei
+ * @Date: 2020-05-18 11:35:57
+ * @LastEditors: renlei
+ * @LastEditTime: 2020-05-20 16:30:30
+ * @Description:入口文件
+ */
+
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.less";
+import "@/assets/less/index.less";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 

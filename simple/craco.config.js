@@ -2,10 +2,11 @@
  * @Author: renlei
  * @Date: 2020-05-18 12:00:59
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-19 18:48:33
+ * @LastEditTime: 2020-05-20 11:13:12
  * @Description:
  */
 const CracoLessPlugin = require("craco-less");
+const path = require("path");
 // const CracoAntDesignPlugin = require("craco-antd");
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
@@ -13,46 +14,46 @@ module.exports = {
     css: {
       loaderOptions: (cssLoaderOptions, { env, paths }) => {
         cssLoaderOptions.sourceMap = env === "development";
-        console.log("key:", cssLoaderOptions);
+        //  console.log("key:", cssLoaderOptions);
         return cssLoaderOptions;
       },
     },
   },
   webpack: {
+    // 别名
+    alias: {
+      "@": path.resolve("src"),
+    },
     configure: (webpackConfig, { env, paths }) => {
       console.log(env);
       webpackConfig.devtool =
-        process.env.NODE_ENV === "development"
-          ? "cheap-module-source-map"
-          : "none";
+        env === "development" ? "cheap-module-source-map" : "none";
       // console.log("webpackConfig:", webpackConfig);
       return webpackConfig;
     },
   },
-  /*  // 别名
-        alias: {
-            '@': path.resolve('src')
-        } */
-  /* devServer: {
-        port: 9999, // 端口配置
-        proxy: {
-            '/api': {
-                target: 'http://xxx.com',
-                ws: false, // websocket
-                changeOrigin: true, //是否跨域
-                secure: false,  // 如果是https接口，需要配置这个参数
-                pathRewrite: {
-                    '^/api': ''
-                }
-            }
-        }
-    } */
-  devServer: (devServerConfig, { env, paths, proxy, allowedHost }) => {
-    // console.log("devServerConfig:", devServerConfig);
+  /*  */
+  devServer: {
+    port: 9999, // 端口配置
+    proxy: {
+      "/api": {
+        target: "http://rap2.taobao.org:38080/app/mock/222615",
+        ws: false, // websocket
+        changeOrigin: true, //是否跨域
+        secure: false, // 如果是https接口，需要配置这个参数
+        pathRewrite: {
+          "^/api": "",
+        },
+      },
+    },
+  },
+  /* devServer: (devServerConfig, { env, paths, proxy, allowedHost }) => {
+    console.log("devServerConfig:", devServerConfig);
     //devServerConfig.compress = false;
     //devServerConfig.publicPath = "";
+
     return devServerConfig;
-  },
+  }, */
   plugins: [
     {
       plugin: CracoLessPlugin,
@@ -60,9 +61,6 @@ module.exports = {
         lessLoaderOptions: {
           modifyVars: { "@primary-color": "#1DA57A" },
           javascriptEnabled: true,
-        },
-        cssLoaderOptions: {
-          sourceMap: true,
         },
       },
     },
