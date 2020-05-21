@@ -2,12 +2,12 @@
  * @Author: renlei
  * @Date: 2020-05-17 20:26:24
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-20 17:38:02
+ * @LastEditTime: 2020-05-21 15:03:51
  * @Description:axios 数据请求封装
  */
 
 import axios from "axios";
-
+import qs from "qs";
 const Axios = axios.create({
   baseURL: "/api/",
   timeout: 1000,
@@ -33,6 +33,7 @@ Axios.interceptors.response.use(
     return data;
   },
   (err) => {
+    console.log(err);
     if (err.response.status === 504 || err.response.status === 404) {
       console.log("服务器被吃了⊙﹏⊙∥");
     } else if (err.response.status === 401) {
@@ -70,7 +71,7 @@ const http = {
   post: function (url, params) {
     params = params || {};
     return new Promise((resolve, reject) => {
-      Axios.post(url, params)
+      Axios.post(url, qs.stringify(params))
         .then((res) => {
           resolve(res.data);
         })

@@ -1,15 +1,21 @@
 /*
  * @Author: renlei
- * @Date: 2020-05-18 11:35:57
+ * @Date: 2020-05-21 09:45:10
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-21 14:45:53
+ * @LastEditTime: 2020-05-21 14:32:13
  * @Description:
  */
+
+//App.js
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import FrontendAuth from "./frontendAuth";
+import FrontendAuth from "./FrontendAuth";
 import routerMap from "./routerMap";
 class App extends Component {
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <Router>
@@ -22,4 +28,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

@@ -2,11 +2,12 @@
  * @Author: renlei
  * @Date: 2020-05-18 12:00:59
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-20 11:13:12
+ * @LastEditTime: 2020-05-21 15:31:44
  * @Description:
  */
 const CracoLessPlugin = require("craco-less");
 const path = require("path");
+const variableStyle = require("./variableStyle");
 // const CracoAntDesignPlugin = require("craco-antd");
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
@@ -37,7 +38,7 @@ module.exports = {
     port: 9999, // 端口配置
     proxy: {
       "/api": {
-        target: "http://rap2.taobao.org:38080/app/mock/222615",
+        target: "http://rap2.taobao.org:38080/app/mock/254896/",
         ws: false, // websocket
         changeOrigin: true, //是否跨域
         secure: false, // 如果是https接口，需要配置这个参数
@@ -59,7 +60,7 @@ module.exports = {
       plugin: CracoLessPlugin,
       options: {
         lessLoaderOptions: {
-          modifyVars: { "@primary-color": "#1DA57A" },
+          modifyVars: variableStyle,
           javascriptEnabled: true,
         },
       },

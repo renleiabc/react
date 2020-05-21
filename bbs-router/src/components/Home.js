@@ -1,14 +1,9 @@
-/*
- * @Author: renlei
- * @Date: 2020-05-20 16:32:45
- * @LastEditors: renlei
- * @LastEditTime: 2020-05-21 18:23:45
- * @Description:主界面
- */
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import Header from "@/components/Header";
-import PostList from "@/components/PostList";
+import PostList from "./PostList";
+import Header from "./Header";
+import Post from "./Post";
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -18,18 +13,17 @@ class Home extends Component {
     };
     this.handleLogout = this.handleLogout.bind(this);
   }
+
   handleLogout() {
-    //注销用户
+    // 注销用户
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("username");
     this.setState({
       userId: null,
       username: null,
     });
-    const RedirectUrl = "/login";
-    // 然后跳转到登录页面
-    this.props.history.push(RedirectUrl);
   }
+
   render() {
     const { match, location } = this.props;
     const { userId, username } = this.state;
@@ -45,8 +39,13 @@ class Home extends Component {
           exact
           render={(props) => <PostList userId={userId} {...props} />}
         />
+        <Route
+          path={`${match.url}/:id`}
+          render={(props) => <Post userId={userId} {...props} />}
+        />
       </div>
     );
   }
 }
+
 export default Home;
