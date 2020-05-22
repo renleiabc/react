@@ -2,12 +2,13 @@
  * @Author: renlei
  * @Date: 2020-05-18 12:00:59
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-21 15:31:44
+ * @LastEditTime: 2020-05-22 16:01:03
  * @Description:
  */
 const CracoLessPlugin = require("craco-less");
 const path = require("path");
 const variableStyle = require("./variableStyle");
+// const TerserPlugin = require("terser-webpack-plugin");
 // const CracoAntDesignPlugin = require("craco-antd");
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
@@ -25,11 +26,27 @@ module.exports = {
     alias: {
       "@": path.resolve("src"),
     },
+    plugins: [
+      /* new TerserPlugin({
+        sourceMap: true, // Must be set to true if using source-maps in production
+        terserOptions: {
+          ecma: undefined,
+          warnings: false,
+          parse: {},
+          compress: {
+            drop_console: process.env.NODE_ENV === "production", // 生产环境下移除控制台所有的内容
+            drop_debugger: false, // 移除断点
+            pure_funcs:
+              process.env.NODE_ENV === "production" ? ["console.log"] : "", // 生产环境下移除console
+          },
+        },
+      }), */
+    ],
     configure: (webpackConfig, { env, paths }) => {
-      console.log(env);
+      console.log(process.env.NODE_ENV);
       webpackConfig.devtool =
         env === "development" ? "cheap-module-source-map" : "none";
-      // console.log("webpackConfig:", webpackConfig);
+      // console.log("webpackConfig:", webpackConfig.plugins);
       return webpackConfig;
     },
   },

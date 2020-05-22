@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-21 17:26:06
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-21 18:26:44
+ * @LastEditTime: 2020-05-22 16:07:42
  * @Description:帖子列表组件
  */
 import React, { Component } from "react";
@@ -24,7 +24,7 @@ class PostList extends Component {
   }
   // 获取帖子列表
   async handlePostList() {
-    const data = await axios.get("/postList");
+    const data = await axios.get("/cardLists");
     console.log(JSON.stringify(data));
   }
   render() {
