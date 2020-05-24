@@ -12,7 +12,7 @@ class Post extends Component {
     this.state = {
       post: null,
       comments: [],
-      editing: false
+      editing: false,
     };
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -30,10 +30,10 @@ class Post extends Component {
   // 获取帖子详情
   refreshPost() {
     const postId = this.props.match.params.id;
-    get(url.getPostById(postId)).then(data => {
+    get(url.getPostById(postId)).then((data) => {
       if (!data.error && data.length === 1) {
         this.setState({
-          post: data[0]
+          post: data[0],
         });
       }
     });
@@ -42,10 +42,10 @@ class Post extends Component {
   // 获取评论列表
   refreshComments() {
     const postId = this.props.match.params.id;
-    get(url.getCommentList(postId)).then(data => {
+    get(url.getCommentList(postId)).then((data) => {
       if (!data.error) {
         this.setState({
-          comments: data
+          comments: data,
         });
       }
     });
@@ -54,7 +54,7 @@ class Post extends Component {
   // 让帖子处于编辑态
   handleEditClick() {
     this.setState({
-      editing: true
+      editing: true,
     });
   }
 
@@ -67,7 +67,7 @@ class Post extends Component {
   // 取消编辑帖子
   handlePostCancel() {
     this.setState({
-      editing: false
+      editing: false,
     });
   }
 
@@ -77,14 +77,14 @@ class Post extends Component {
     const comment = {
       author: this.props.userId,
       post: postId,
-      content: content
+      content: content,
     };
     this.saveComment(comment);
   }
 
   // 保存新的评论到服务器
   saveComment(comment) {
-    post(url.createComment(), comment).then(data => {
+    post(url.createComment(), comment).then((data) => {
       if (!data.error) {
         this.refreshComments();
       }
@@ -93,14 +93,14 @@ class Post extends Component {
 
   // 同步帖子的修改到服务器
   savePost(id, post) {
-    put(url.updatePost(id), post).then(data => {
+    put(url.updatePost(id), post).then((data) => {
       if (!data.error) {
         /* 因为返回的帖子对象只有author的id信息，
          * 所有需要额外把完整的author信息合并到帖子对象中 */
         const newPost = { ...data, author: this.state.post.author };
         this.setState({
           post: newPost,
-          editing: false
+          editing: false,
         });
       }
     });
@@ -112,7 +112,7 @@ class Post extends Component {
     if (!post) {
       return null;
     }
-    const editable = userId === post.author.id;
+    const editable = userId === post.author.id ? post.author.id : 123;
     return (
       <div className="post">
         {editing ? (
