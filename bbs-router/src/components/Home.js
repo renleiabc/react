@@ -1,3 +1,11 @@
+/*
+ * @Author: renlei
+ * @Date: 2020-05-21 17:38:00
+ * @LastEditors: renlei
+ * @LastEditTime: 2020-05-26 11:45:10
+ * @Description:
+ */
+
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import PostList from "./PostList";
@@ -27,6 +35,7 @@ class Home extends Component {
   render() {
     const { match, location } = this.props;
     const { userId, username } = this.state;
+    console.log(match.url);
     return (
       <div>
         <Header
