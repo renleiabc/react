@@ -3,7 +3,7 @@
  * @Author: renlei
  * @Date: 2020-05-25 16:34:18
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-25 18:16:43
+ * @LastEditTime: 2020-05-25 22:46:55
  * @Description:
  */
 
@@ -28,30 +28,30 @@ function App() {
       <section style={{ border: "5px solid green" }}>
         <Router>
           <NavLink
-            to={{ pathname: "son1" }}
+            to="/son1"
             activeClassName="select"
             activeStyle={{
               fontWeight: "bold",
-              color: "red",
+              color: "#fff",
             }}
-            exact
           >
             son1
           </NavLink>
           &nbsp; &nbsp; &nbsp;
           <NavLink
-            to={{ pathname: "son2" }}
+            to="/son2"
             activeStyle={{
               fontWeight: "bold",
-              color: "red",
+              color: "#fff",
             }}
             activeClassName="select"
           >
             son2
           </NavLink>
           <div style={{ height: "100px", border: "5px solid red" }}>
-            <Route path="/son1" component={Son1}></Route>
-            <Route path="/son2" component={Son2}></Route>
+            <Route path="/son1" component={Son1} exact></Route>
+            <Route path="/son1/son2" component={Son2}></Route>
+            <Route path="/son3"></Route>
           </div>
         </Router>
       </section>

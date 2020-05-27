@@ -13,7 +13,8 @@
   }
 }
 
-.App-header {}
+.App-header {
+}
 
 .App-link {
   color: #61dafb;
@@ -26,6 +27,7 @@ a {
 
 .select {
   background: tomato;
+  color: #fff;
 }
 
 @keyframes App-logo-spin {
