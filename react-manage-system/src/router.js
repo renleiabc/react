@@ -2,12 +2,15 @@
  * @Author: renlei
  * @Date: 2020-05-27 14:20:28
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 16:08:19
+ * @LastEditTime: 2020-05-27 17:25:55
  * @Description:
  */
 import React, { lazy, Suspense } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { checkIsAdmin, checkAuth } from './utils/utils';
+/* //当用户访问一个页面时， 该页面应该只
+加载自己使用到的代码。 解决这个问题的方案就是代码分片， 将JS代码
+分片打包到多个文件中， 然后在访问页面时按需加载。通过import导入组件， 创建代码分片点 */
 const Login = lazy(() => import('./pages/Login/index'));
 const Main = lazy(() => import('./pages/Main/index'));
 const Icons = lazy(() => import('./pages/Icons/index'));
