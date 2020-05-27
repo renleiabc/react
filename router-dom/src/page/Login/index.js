@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-27 17:13:09
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 18:44:06
+ * @LastEditTime: 2020-05-27 23:08:07
  * @Description:登录界面
  */
 /*
@@ -17,7 +17,7 @@ import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import { Form, Input, Button, message } from "antd";
 import IconFont from "../../components/IconFont";
-import styles from "./index.module.less";
+import "./index.less";
 
 class Login extends Component {
   render() {
@@ -30,32 +30,69 @@ class Login extends Component {
         return <Redirect to="/main/dashboard" />;
       }
     }
+    const onFinish = (values) => {
+      console.log("Success:", values);
+      if (values) {
+        localStorage.setItem("ms_username", values.username);
+        this.props.history.push("/main/home");
+      } else {
+        message.error("登录失败!");
+        return false;
+      }
+    };
+
+    const onFinishFailed = (errorInfo) => {
+      console.log("Failed:", errorInfo);
+    };
     return (
-      <div className={styles.loginWrap}>
-        <div className={styles.msLogin}>
-          <div className={styles.msTitle}>后台管理系统</div>
-          <Form className={styles.msContent}>
-            <Form.Item rules={[{ required: true, message: "请输入用户名" }]}>
-              <Input />
+      <div className="loginWrap">
+        <div className="msLogin">
+          <div className="msTitle">后台管理系统</div>
+          <Form
+            className="msContent"
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+          >
+            <Form.Item
+              label="用户名"
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: "请输入用户名!",
+                },
+              ]}
+            >
+              <Input addonBefore={<IconFont type="anticon-lx-people" />} />
             </Form.Item>
-            <Form.Item rules={[{ required: true, message: "请输入密码" }]}>
+            <Form.Item
+              label="密码"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: "请输入密码!",
+                },
+              ]}
+            >
               <Input
                 type="password"
                 addonBefore={<IconFont type="anticon-lx-lock" />}
               />
             </Form.Item>
-            <div className={styles.loginBtn}>
-              <Button type="primary" onClick={this.onSubmit.bind(this)}>
+            <div className="loginBtn">
+              <Button type="primary" htmlType="submit">
                 登录
               </Button>
             </div>
-            <p className={styles.loginTips}>Tips : 用户名和密码随便填。</p>
+            <p className="loginTips">Tips : 用户名和密码随便填。</p>
           </Form>
         </div>
       </div>
     );
   }
-  onSubmit(e) {
+
+  /* onSubmit(e) {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -66,7 +103,7 @@ class Login extends Component {
         return false;
       }
     });
-  }
+  } */
 }
 
 export default withRouter(Login);

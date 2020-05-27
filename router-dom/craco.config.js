@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-18 12:00:59
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 18:47:02
+ * @LastEditTime: 2020-05-27 21:42:12
  * @Description:项目配置文件
  */
 const CracoLessPlugin = require("craco-less");
@@ -79,9 +79,6 @@ module.exports = {
         lessLoaderOptions: {
           modifyVars: variableStyle,
           javascriptEnabled: true,
-        },
-        cssLoaderOptions: {
-          modules: { localIdentName: "[local]_[hash:base64:5]" },
         },
       },
     },
