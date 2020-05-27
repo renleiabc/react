@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-20 16:32:11
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-25 14:44:19
+ * @LastEditTime: 2020-05-26 18:15:05
  * @Description:登录页
  */
 import React, { Component } from "react";
@@ -38,7 +38,7 @@ class Login extends Component {
   }
   // 处理用户名、密码的变化
   handleChange(e) {
-    console.log(e.target.name);
+    // console.log(e.target.name);
     if (e.target.name === "username") {
       this.setState({
         username: e.target.value,
@@ -67,7 +67,7 @@ class Login extends Component {
     console.log(JSON.stringify(data));
     const loginIfo = data.data;
     if (data.code === 200) {
-      message.success(loginIfo.message);
+      //  message.success(loginIfo.message);
       // 保存信息到sessionStorage
       sessionStorage.setItem("userId", loginIfo.id);
       sessionStorage.setItem("username", username);
@@ -79,7 +79,8 @@ class Login extends Component {
         ? this.props.location.state.from.pathname
         : "/";
       // 登陆成功之后的跳转
-      this.props.history.push("/");
+      console.log(RedirectUrl);
+      this.props.history.push("/main");
     } else {
       message.error("登录失败！");
     }

@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-25 13:54:25
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-25 16:29:32
+ * @LastEditTime: 2020-05-26 18:15:26
  * @Description:
  */
 import React from "react";
@@ -14,10 +14,11 @@ import NoPermissions from "./pages/404"; //引入权限不足组件
 // @observer
 class PrivateRoute extends React.Component {
   routerFun = (list) => {
-    console.log(list);
     const isLogin = sessionStorage.username;
     console.log(isLogin);
     const permissions = "admin";
+    const { pathname, name } = this.props.location;
+
     return list.map((route) => {
       if (route.meta && route.meta.require) {
         //第一步，验证是否需要登录就可进入
@@ -26,7 +27,11 @@ class PrivateRoute extends React.Component {
           // const permissions = this.props.userStore.userMessage.permissions; //获取登录用户的权限
           const role = route.role; //获取路由文件中的权限
           console.log(role.includes(permissions));
-          if (role.includes(permissions)) {
+          // 如果是登陆状态，访问登陆界面的时候，重定向到主页
+          if (pathname === "/login") {
+            console.log(pathname);
+            return <Redirect to="/main" key={pathname} />;
+          } else if (role.includes(permissions)) {
             //比较权限
             if (route.children) {
               console.log(route.children);
@@ -37,7 +42,6 @@ class PrivateRoute extends React.Component {
                   path={route.path}
                   component={route.component}
                   render={() => {
-                    console.log("=====");
                     /* <route.component key={route.name} {...this.props}>
                       {this.routerFun(route.children)}
                       <Route
