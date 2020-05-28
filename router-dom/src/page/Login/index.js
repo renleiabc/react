@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-27 17:13:09
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 23:08:07
+ * @LastEditTime: 2020-05-28 09:08:28
  * @Description:登录界面
  */
 /*
@@ -21,6 +21,14 @@ import "./index.less";
 
 class Login extends Component {
   render() {
+    const layout = {
+      labelCol: {
+        span: 6,
+      },
+      wrapperCol: {
+        span: 18,
+      },
+    };
     const { location } = this.props;
     var username = localStorage.getItem("ms_username");
     console.log(location);
@@ -49,6 +57,7 @@ class Login extends Component {
         <div className="msLogin">
           <div className="msTitle">后台管理系统</div>
           <Form
+            {...layout}
             className="msContent"
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}

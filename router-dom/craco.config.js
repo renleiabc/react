@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-18 12:00:59
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 21:42:12
+ * @LastEditTime: 2020-05-28 09:09:15
  * @Description:项目配置文件
  */
 const CracoLessPlugin = require("craco-less");
@@ -16,7 +16,7 @@ module.exports = {
     css: {
       loaderOptions: (cssLoaderOptions, { env, paths }) => {
         cssLoaderOptions.sourceMap = env === "development";
-        console.log("key:", cssLoaderOptions);
+        // console.log("key:", cssLoaderOptions);
         return cssLoaderOptions;
       },
     },
