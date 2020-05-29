@@ -2,14 +2,14 @@
  * @Author: renlei
  * @Date: 2020-05-27 17:32:50
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-28 09:41:17
+ * @LastEditTime: 2020-05-29 21:16:02
  * @Description: 主体界面
  */
 import React, { Component } from "react";
 import { Layout } from "antd";
 import HeaderPart from "../../components/Header/index";
 import "./index.less";
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Sider, Content } = Layout;
 class Main extends Component {
   state = {
     collapsed: false,

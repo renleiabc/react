@@ -3,7 +3,7 @@
  * @Author: renlei
  * @Date: 2020-05-25 16:34:18
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 18:13:50
+ * @LastEditTime: 2020-05-29 21:15:06
  * @Description:所有路由文件
  */
 
@@ -55,7 +55,7 @@ export const AppRoutes = (props) => {
 };
 export const MainRoutes = () => {
   return (
-    <Suspense fallback={<div></div>}>
+    <Suspense fallback={<Spin size="large" />}>
       <Switch>
         <Redirect exact from="/main" to="/main/home" />
         <Route exact path="/main/home" component={Home} />
