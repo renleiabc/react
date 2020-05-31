@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Tooltip, Dropdown, Menu, Icon, Avatar } from "antd";
-import IconFont from "../IconFont";
-import Events from "../Events";
-import styles from "./index.module.css";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Tooltip, Dropdown, Menu, Icon, Avatar } from 'antd';
+import IconFont from '../IconFont';
+import Events from '../Events';
+import styles from './index.module.css';
 
 class Header extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: localStorage.getItem("ms_username") || "Admin",
+			username: localStorage.getItem('ms_username') || 'Admin',
 			fullscreen: false,
-			collapsed: false
+			collapsed: false,
 		};
 	}
 	render() {
 		return (
 			<div className={styles.header}>
 				<div className={styles.collapseBtn} onClick={this.onCollapse.bind(this)}>
-					<Icon type={this.state.collapsed ? "menu-unfold" : "menu-fold"} />
+					<Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
 				</div>
 				{/* <div className={styles.logo}>React后台管理系统</div> */}
 				<div className={styles.headerRight}>
@@ -28,7 +28,7 @@ class Header extends Component {
 								<IconFont type="anticon-lx-full" />
 							</div>
 						</Tooltip>
-						<Tooltip title={"消息中心"} placement="bottom">
+						<Tooltip title={'消息中心'} placement="bottom">
 							<Link to="tabs">
 								<div className={styles.btnBell}>
 									<IconFont type="anticon-lx-notice" />
@@ -37,11 +37,11 @@ class Header extends Component {
 							</Link>
 						</Tooltip>
 						{/* 用户头像 */}
-						<Avatar className={styles.userAvator} src={require("../../assets/img/img.jpg")} />
+						<Avatar className={styles.userAvator} src={require('../../assets/img/img.jpg')} />
 						{/* 用户名下拉菜单 */}
 						<Dropdown
 							className={styles.userName}
-							trigger={["click"]}
+							trigger={['click']}
 							overlay={
 								<Menu onClick={this.handleDropdown.bind(this)}>
 									{/* Menu.Item必须设置唯一的key */}
@@ -69,10 +69,10 @@ class Header extends Component {
 	}
 	// 折叠展开侧边栏
 	onCollapse() {
-		Events.emit("collapse");
+		Events.emit('collapse');
 		const collapsed = this.state.collapsed;
 		this.setState({
-			collapsed: !collapsed
+			collapsed: !collapsed,
 		});
 	}
 	// 设置全屏
@@ -102,21 +102,21 @@ class Header extends Component {
 			}
 		}
 		this.setState({
-			fullscreen: !fullscreen
+			fullscreen: !fullscreen,
 		});
 	}
 	// 用户名下拉菜单操作
 	handleDropdown({ key }) {
 		switch (key) {
-			case "0":
-				window.open("https://lin-xin.gitee.io/about/", "_blank");
+			case '0':
+				window.open('https://lin-xin.gitee.io/about/', '_blank');
 				break;
-			case "1":
-				window.open("https://github.com/lin-xin/react-manage-system", "_blank");
+			case '1':
+				window.open('https://github.com/lin-xin/react-manage-system', '_blank');
 				break;
-			case "2":
-				localStorage.removeItem("ms_username");
-				this.props.history.push("/login");
+			case '2':
+				localStorage.removeItem('ms_username');
+				this.props.history.push('/login');
 				break;
 			default:
 				return;
