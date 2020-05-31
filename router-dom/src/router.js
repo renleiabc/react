@@ -3,7 +3,7 @@
  * @Author: renlei
  * @Date: 2020-05-25 16:34:18
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-31 21:02:43
+ * @LastEditTime: 2020-05-31 23:19:40
  * @Description:所有路由文件
  */
 
@@ -53,7 +53,6 @@ export const AppRoutes = (props) => {
           <Route exact path="/" component={Login} />
           <Route path="/login" component={Login} />
           <AuthRoute path="/main" component={Main} />
-          <Route path="/error/:code" component={ErrorRoute} />
           <Route component={ErrorRoute} />
         </Switch>
       </Suspense>
@@ -102,6 +101,7 @@ export const MainRoutes = () => {
           component={Markdown}
           fn={oneUser}
         />
+        <Route path="/main/error/:code" component={ErrorRoute} />
         {/*  
         <AdminRoute exact path="/main/permission" component={Permission} />
         */}
@@ -116,7 +116,7 @@ const LimitRoute = ({ component: Component, fn, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        fn() ? <Component {...props} /> : <Redirect to="/error/403" />
+        fn() ? <Component {...props} /> : <Redirect to="/main/error/403" />
       }
     />
   );
