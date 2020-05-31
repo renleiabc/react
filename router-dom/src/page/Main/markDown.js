@@ -1,19 +1,19 @@
 /*
  * @Author: renlei
- * @Date: 2020-05-27 17:38:45
+ * @Date: 2020-05-31 10:16:03
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 18:32:38
+ * @LastEditTime: 2020-05-31 10:16:55
  * @Description:
  */
 import React, { Component } from "react";
 
-class Home extends Component {
+class MarkDown extends Component {
   render() {
     return (
       <div className="animate-route">
-        <div>首页</div>
+        <div>markDown编辑器</div>
       </div>
     );
   }
 }
-export default Home;
+export default MarkDown;

@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-18 12:00:59
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-28 09:09:15
+ * @LastEditTime: 2020-05-30 16:01:30
  * @Description:项目配置文件
  */
 const CracoLessPlugin = require("craco-less");
@@ -12,6 +12,9 @@ const variableStyle = require("./variableStyle");
 // const CracoAntDesignPlugin = require("craco-antd");
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 module.exports = {
+  babel: {
+    plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
+  },
   style: {
     css: {
       loaderOptions: (cssLoaderOptions, { env, paths }) => {

@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-27 18:09:01
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 18:10:41
+ * @LastEditTime: 2020-05-31 20:38:44
  * @Description:不存在界面展示
  */
 
@@ -13,6 +13,7 @@ class ErrorRoute extends Component {
   render() {
     const { match } = this.props;
     const code = match.params.code;
+    console.log(code);
     return !code || code === "404" ? (
       <ErrorPage />
     ) : (

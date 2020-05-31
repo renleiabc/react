@@ -2,7 +2,7 @@
  * @Author: renlei
  * @Date: 2020-05-27 17:13:09
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-28 09:08:28
+ * @LastEditTime: 2020-05-29 21:34:03
  * @Description:登录界面
  */
 /*
@@ -34,8 +34,8 @@ class Login extends Component {
     console.log(location);
     /* 等以后就不必重复登录了 */
     if (username) {
-      if (location.pathname === "/login") {
-        return <Redirect to="/main/dashboard" />;
+      if (location.pathname === "/login" || location.pathname === "/") {
+        return <Redirect to="/main/home" />;
       }
     }
     const onFinish = (values) => {

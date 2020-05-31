@@ -1,36 +1,36 @@
+/*
+ * @Author: renlei
+ * @Date: 2020-05-27 21:00:49
+ * @LastEditors: renlei
+ * @LastEditTime: 2020-05-30 09:39:06
+ * @Description:访问失败界面展示
+ */
+
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Button } from "antd";
 import * as PropTypes from "prop-types";
-import styles from "./index.module.css";
+import "./index.less";
 
 class ErrorPage extends Component {
-  static propTypes = {
-    code: PropTypes.string,
-    tips: PropTypes.string,
-  };
-  static defaultProps = {
-    code: "404",
-    tips: "啊哦~ 你所访问的页面不存在",
-  };
   render() {
     const { history } = this.props;
     return (
-      <div className={styles.errorPage}>
-        <div className={styles.errorCode}>
+      <div className="errorPage">
+        <div className="errorCode">
           {this.props.code.split("").map((item, index) => {
             return <span key={index}>{item}</span>;
           })}
         </div>
-        <div className={styles.errorDesc}>{this.props.tips}</div>
-        <div className={styles.errorHandle}>
-          <Link to="/main/dashboard" replace>
+        <div className="errorDesc">{this.props.tips}</div>
+        <div className="errorHandle">
+          <Link to="/main/home" replace>
             <Button type="primary" size="large">
               返回首页
             </Button>
           </Link>
           <Button
-            className={styles.errorBtn}
+            className="errorBtn"
             type="primary"
             size="large"
             onClick={() => {
@@ -44,5 +44,12 @@ class ErrorPage extends Component {
     );
   }
 }
-
+ErrorPage.defaultProps = {
+  code: "404",
+  tips: "啊哦~ 你所访问的页面不存在",
+};
+ErrorPage.propTypes = {
+  code: PropTypes.string,
+  tips: PropTypes.string,
+};
 export default withRouter(ErrorPage);

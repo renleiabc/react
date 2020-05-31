@@ -1,19 +1,19 @@
 /*
  * @Author: renlei
- * @Date: 2020-05-27 17:38:45
+ * @Date: 2020-05-31 09:29:44
  * @LastEditors: renlei
- * @LastEditTime: 2020-05-27 18:32:38
- * @Description:
+ * @LastEditTime: 2020-05-31 09:30:23
+ * @Description:国际化
  */
 import React, { Component } from "react";
 
-class Home extends Component {
+class Locale extends Component {
   render() {
     return (
       <div className="animate-route">
-        <div>首页</div>
+        <div>国际化</div>
       </div>
     );
   }
 }
-export default Home;
+export default Locale;
