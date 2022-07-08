@@ -126,7 +126,7 @@
     "mobx": "^5.5.1",
     "mobx-react": "^5.3.4",
     "mockjs": "^1.0.1-beta3",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "node-sass": "^4.9.4",
     "path": "^0.12.7",
     "react-dnd": "^7.0.2",
